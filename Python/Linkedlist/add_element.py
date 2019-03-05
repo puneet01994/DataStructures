@@ -1,10 +1,22 @@
-from base_linkedList import Node
+from base_linkedlist import Node
 
 
 class LinkedList:
 
     def __init__(self, head=None):
         self.head = head
+
+    def print_list(self):
+        """Print the complete linked list."""
+        if self.head is None:
+            print("This Linked list is empty.")
+
+        else:
+            head1 = self.head
+            while head1.next is not None:
+                print(head1.value, "-->", end=" ")
+                head1 = head1.next
+            print(head1.value)
 
     def add_element(self, value):
         """Add an element in the end of the linked list."""
@@ -18,18 +30,6 @@ class LinkedList:
 
         else:
             self.head = new_node
-
-    def print_list(self):
-        """Print the complete linked list."""
-        if self.head is None:
-            print("This Linked list is empty.")
-
-        else:
-            head1 = self.head
-            while head1.next is not None:
-                print(head1.value, "-->", end=" ")
-                head1 = head1.next
-            print(head1.value)
 
     def add_element_at_given_position(self, value, pos):
         """Add element at the given position in the linked list, Index starts from 0."""
@@ -58,6 +58,45 @@ class LinkedList:
         else:
             print("Given position does not exists.")
 
+    def remove_from_end(self):
+        """Remove the last element of the linked list."""
+        head1 = self.head
+
+        while head1.next.next is not None:
+            head1 = head1.next
+
+        head1.next = None
+
+    def remove_element_at_given_position(self, pos):
+        """Removes an element from a linked list at a given position. (Index starts from 0.)"""
+        if self.head is None:
+            print("Can not removes Element as the linked list provided is empty.")
+            return
+
+        head1 = self.head
+
+        if pos == 0:
+            self.head = head1.next
+            head1 = None
+            return
+
+        for i in range(0, pos-1):
+            head1 = head1.next
+            if head1.next is None:
+                break
+
+        if head1.next is None:
+            print("Please try with some smaller number.")
+            return
+
+        if head1.next.next is not None:
+            head1.next = head1.next.next
+        else:
+            head1.next = None
+
+
+
+print("******************Cases to add elements at the end of the linked list.******************")
 
 l1 = LinkedList()
 
@@ -73,3 +112,26 @@ print("******************Cases to add elements at a given position.*************
 l1.add_element_at_given_position(9, 4)
 
 l1.print_list()
+
+print("******************Cases to remove elements from the end.******************")
+
+l1.remove_from_end()
+
+l1.print_list()
+
+print("******************Cases to remove elements from the given position.******************")
+
+l1.remove_element_at_given_position(2)
+
+l1.print_list()
+
+# l1.remove_element_at_given_position(0)
+# l1.print_list()
+#
+# l1.remove_element_at_given_position(0)
+# l1.print_list()
+#
+# l1.remove_element_at_given_position(0)
+# l1.print_list()
+
+l1.remove_element_at_given_position(7)
