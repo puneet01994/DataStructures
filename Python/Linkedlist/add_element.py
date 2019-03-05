@@ -94,6 +94,14 @@ class LinkedList:
         else:
             head1.next = None
 
+    def get_count(self, head1):
+        if not head1:
+            return 0
+
+        return 1 + self.get_count(head1.next)
+
+    def length_of_linked_list(self):
+        return self.get_count(self.head)
 
 
 print("******************Cases to add elements at the end of the linked list.******************")
@@ -119,6 +127,10 @@ l1.remove_from_end()
 
 l1.print_list()
 
+leng = l1.length_of_linked_list()
+print("Length of the linked list is {0}".format(leng))
+
+
 print("******************Cases to remove elements from the given position.******************")
 
 l1.remove_element_at_given_position(2)
@@ -134,4 +146,7 @@ l1.print_list()
 # l1.remove_element_at_given_position(0)
 # l1.print_list()
 
-l1.remove_element_at_given_position(7)
+# l1.remove_element_at_given_position(7)
+
+leng = l1.length_of_linked_list()
+print("Length of the linked list is {0}".format(leng))
