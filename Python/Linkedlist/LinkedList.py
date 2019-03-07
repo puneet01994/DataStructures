@@ -94,13 +94,42 @@ class LinkedList:
         else:
             head1.next = None
 
+    def remove_element(self, num):
+        """Removes an element from the linked list."""
+        if self.head is None:
+            print("Linked list is empty.")
+            return
+
+        if self.head.value == num:
+            self.head = self.head.next
+            print("Deleted the element.")
+            return
+
+        head1 = self.head
+        prev = None
+
+        while head1 is not None:
+            if head1.value == num:
+                break
+            prev = head1
+            head1 = head1.next
+
+        if head1 is None:
+            print("Value not found.")
+            return
+
+        prev.next = head1.next
+        print("Deleted the given number.")
+
     def get_count(self, head1):
+        """Recursive function to find length of a linked list."""
         if not head1:
             return 0
 
         return 1 + self.get_count(head1.next)
 
     def length_of_linked_list(self):
+        """Length of the linked list."""
         return self.get_count(self.head)
 
 
@@ -150,3 +179,12 @@ l1.print_list()
 
 leng = l1.length_of_linked_list()
 print("Length of the linked list is {0}".format(leng))
+
+print("******************Cases to remove given element.******************")
+
+l1.remove_element(3)
+
+l1.remove_element(2)
+
+l1.remove_element(6)
+l1.print_list()
