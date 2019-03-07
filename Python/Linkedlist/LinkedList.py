@@ -121,6 +121,32 @@ class LinkedList:
         prev.next = head1.next
         print("Deleted the given number.")
 
+    def nth_element_from_end(self, n):
+        if n == 0:
+            print("Please start the index from 1 and try again.")
+            return
+
+        head1 = self.head
+
+        if head1 is None:
+            print("Linked list is Empty.")
+            return
+
+        n1 = head1
+        n2 = head1
+
+        for i in range(1, n):
+            n1 = n1.next
+            if n1 is None and i != n:
+                print("Input number should be less then or equal to length of the linked list.")
+                return
+
+        while n1.next is not None:
+            n1 = n1.next
+            n2 = n2.next
+
+        print(n, "th value from the end is:", n2.value)
+
     def get_count(self, head1):
         """Recursive function to find length of a linked list."""
         if not head1:
@@ -162,9 +188,9 @@ print("Length of the linked list is {0}".format(leng))
 
 print("******************Cases to remove elements from the given position.******************")
 
-l1.remove_element_at_given_position(2)
+# l1.remove_element_at_given_position(2)
 
-l1.print_list()
+# l1.print_list()
 
 # l1.remove_element_at_given_position(0)
 # l1.print_list()
@@ -177,14 +203,21 @@ l1.print_list()
 
 # l1.remove_element_at_given_position(7)
 
+print("******************Length of the linked list.******************")
+
 leng = l1.length_of_linked_list()
 print("Length of the linked list is {0}".format(leng))
 
+
 print("******************Cases to remove given element.******************")
 
-l1.remove_element(3)
+# l1.remove_element(3)
+#
+# l1.remove_element(2)
+#
+# l1.remove_element(6)
+# l1.print_list()
 
-l1.remove_element(2)
+print("******************Nth Element from the end******************")
 
-l1.remove_element(6)
-l1.print_list()
+l1.nth_element_from_end(0)
