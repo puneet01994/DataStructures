@@ -147,6 +147,19 @@ class LinkedList:
 
         print(n, "th value from the end is:", n2.value)
 
+    def middle_element_of_linked_list(self):
+        n1 = self.head
+        n2 = self.head
+
+        while n1.next is not None:
+            if n1.next.next is not None:
+                n1 = n1.next.next
+            else:
+                break
+            n2 = n2.next
+
+        print("Middle element is ", n2.value)
+
     def get_count(self, head1):
         """Recursive function to find length of a linked list."""
         if not head1:
@@ -220,4 +233,9 @@ print("******************Cases to remove given element.******************")
 
 print("******************Nth Element from the end******************")
 
-l1.nth_element_from_end(0)
+l1.nth_element_from_end(2)
+
+print("******************Middle Element of the Linked List.******************")
+l1.add_element(9)
+l1.print_list()
+l1.middle_element_of_linked_list()
