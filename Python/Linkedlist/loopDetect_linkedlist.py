@@ -34,4 +34,31 @@ def detect_loop(ll):
     print("No loop found.")
 
 
+print("******************Loop detection in Linked List.******************")
 detect_loop(l1)
+
+print("******************Length of the loop in Linked List.******************")
+
+
+def length_of_loop(ll):
+    n1 = ll.head
+    n2 = ll.head
+
+    while n1 and n2 and n2.next:
+        n1 = n1.next
+        n2 = n2.next.next
+
+        if n1 == n2:
+            break
+
+    count = 1
+    n2 = n2.next
+
+    while n1 != n2:
+        n2 = n2.next
+        count += 1
+
+    print("Length of the loop in the given linked list is ", count+1)
+
+
+length_of_loop(l1)
