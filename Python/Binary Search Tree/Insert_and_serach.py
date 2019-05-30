@@ -54,6 +54,16 @@ def insert_recursively(root, key):
             insert_recursively(root.left, key)
 
 
+def search(root, key):
+    if root is None or root.value == key:
+        return root
+
+    if root.value < key:
+        return search(root.right, key)
+    elif root.value > key:
+        return search(root.left, key)
+
+
 r = Node(8)
 
 #  Iterative insertion.
@@ -69,3 +79,10 @@ insert_recursively(r, 3)
 insert_recursively(r, 10)
 insert_recursively(r, 6)
 print_inorder(r)
+
+
+result = search(r, 9)
+if result:
+    print(result.value)
+else:
+    print("Not Found")
