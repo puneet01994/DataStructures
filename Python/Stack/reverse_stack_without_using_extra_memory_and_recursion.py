@@ -18,9 +18,9 @@ class Stack:
             self.top = node
 
     def pop(self):
-        removedNode = self.top
+        removed_node = self.top
         self.top = self.top.next
-        return removedNode.value
+        return removed_node.value
 
     def reverse(self):
         curr = self.top
@@ -35,7 +35,17 @@ class Stack:
 
         self.top = prev
 
+    def clone(self, destination):
+        self.reverse()
+        curr = self.top
+        while curr:
+            destination.push(curr.value)
+            curr = curr.next
+        self.reverse()
+
     def print_stack(self):
+        if self.top is None:
+            print("Empty stack")
         curr = self.top
 
         while curr:
@@ -52,3 +62,21 @@ stack.print_stack()
 stack.reverse()
 print()
 stack.print_stack()
+
+# ------------- CLONE A STACK FROM SOURCE TO DESTINATION WITHOUT USING EXTRA SPACE ----------------
+source = Stack()
+source.push(1)
+source.push(2)
+source.push(3)
+source.push(4)
+
+destination = Stack()
+print("Source stack was", )
+source.print_stack()
+print("Destination stack was")
+destination.print_stack()
+source.clone(destination=destination)
+print("Source stack is now", )
+source.print_stack()
+print("Destination stack is now")
+destination.print_stack()
