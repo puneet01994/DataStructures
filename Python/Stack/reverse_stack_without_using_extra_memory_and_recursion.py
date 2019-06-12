@@ -8,6 +8,11 @@ class Stack:
     def __init__(self):
         self.top = None
 
+    def isEmpty(self):
+        if self.top is None:
+            return True
+        return False
+
     def push(self, value):
         if self.top is None:
             self.top = Node(value)
@@ -43,6 +48,20 @@ class Stack:
             curr = curr.next
         self.reverse()
 
+    def reverse_recursively(self):
+        if not self.isEmpty():
+            temp = self.pop()
+            self.reverse_recursively()
+            self.insert_at_bottom(temp)
+
+    def insert_at_bottom(self, data):
+        if self.isEmpty():
+            self.push(data)
+        else:
+            temp = self.pop()
+            self.insert_at_bottom(data)
+            self.push(temp)
+
     def print_stack(self):
         if self.top is None:
             print("Empty stack")
@@ -59,7 +78,8 @@ stack.push(2)
 stack.push(3)
 
 stack.print_stack()
-stack.reverse()
+# stack.reverse() and stack.reverse_recursively() both will give the same output.
+stack.reverse_recursively()
 print()
 stack.print_stack()
 
